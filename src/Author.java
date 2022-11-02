@@ -1,11 +1,29 @@
 public class Author {
-    String authorName;
-
+    private String firstName;
+    private String lastName;
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
     public String getAuthorName() {
-        return this.authorName;
+
+        return firstName + lastName;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    @Override
+    public String toString() {
+        return " Имя: " + firstName + "Фамилия: " + lastName;
+    }
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Author sapkowski = (Author) other;
+        return firstName.equals(sapkowski.firstName);
+    }
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(firstName);
     }
 }
